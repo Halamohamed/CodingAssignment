@@ -30,6 +30,7 @@ public class PersonRepositoryTest extends AbstractPersonFactory {
 
     @Test
     void findAll_return_data(){
+
         assertEquals(seeder.personData(), testObject.findAll());
     }
 

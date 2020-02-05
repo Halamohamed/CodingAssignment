@@ -10,7 +10,7 @@ public class Person {
     private Address address;
 
 
-     Person(int personId, String firstName, String lastName, String email, Address address) {
+     public Person(int personId, String firstName, String lastName, String email, Address address) {
         this.personId = personId;
         setFirstName(firstName);
         setLastName(lastName);

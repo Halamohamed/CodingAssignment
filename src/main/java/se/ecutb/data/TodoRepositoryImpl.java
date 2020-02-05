@@ -59,7 +59,7 @@ public class TodoRepositoryImpl implements TodoRepository {
     @Override
     public List<Todo> findByAssigneeId(int personId) {
         return todoList.stream()
-                .filter(todo -> (todo.getTodoId() != 0 && todo.getAssignee().getPersonId() == personId))
+                .filter(todo -> (todo.getTodoId() == personId))
                 .collect(Collectors.toList());
     }
 

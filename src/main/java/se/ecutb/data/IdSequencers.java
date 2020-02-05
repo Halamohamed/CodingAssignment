@@ -5,7 +5,7 @@ public interface IdSequencers {
      * Increment and return an int
      * @return int next PersonId
      */
-    int nextPersonId();
+     int nextPersonId();
 
     /**
      * Increment and return an int

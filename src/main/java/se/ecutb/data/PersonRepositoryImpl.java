@@ -48,15 +48,25 @@ public class PersonRepositoryImpl implements PersonRepository {
 
     @Override
     public List<Person> findByAddress(Address address) {
+        if(address != null){
+            return people.stream()
+                    .filter(person -> person.getAddress() != null && person.getAddress().equals(address))
+                    .collect(Collectors.toList());
+        }
         return people.stream()
-                .filter(person -> person.getAddress().toString().equalsIgnoreCase(address.toString()))
+                .filter(person -> person.getAddress() == null)
                 .collect(Collectors.toList());
     }
 
     @Override
     public List<Person> findByCity(String city) {
+        if(city != null){
+            return people.stream()
+                    .filter(person -> person.getAddress().getCity() != null && person.getAddress().getCity().equalsIgnoreCase(city))
+                    .collect(Collectors.toList());
+        }
         return people.stream()
-                .filter(person -> person.getAddress().getCity().contains(city))
+                .filter(person -> person.getAddress().getCity() == null)
                 .collect(Collectors.toList());
     }
 

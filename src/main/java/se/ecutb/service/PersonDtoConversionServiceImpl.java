@@ -21,8 +21,12 @@ public class PersonDtoConversionServiceImpl implements PersonDtoConversionServic
 
     @Override
     public PersonDtoWithTodo convertToPersonDtoWithTodo(Person person, List<Todo> assignedTodos) {
+        List<TodoDto> todoDtos = new ArrayList<>();
+        todoDtos = assignedTodos.stream()
+                .map(todo -> new TodoDto(todo.getTodoId(),todo.getTaskDescription(),todo.getDeadLine(),todo.getAssignee().getPersonId(),todo.isDone()))
+                .collect(Collectors.toList());
 
-        PersonDtoWithTodo personDtoWithTodo = new PersonDtoWithTodo(person.getPersonId(),person.getFirstName(),person.getLastName(),null);
+        PersonDtoWithTodo personDtoWithTodo = new PersonDtoWithTodo(person.getPersonId(),person.getFirstName(),person.getLastName(),todoDtos);
         return personDtoWithTodo;
     }
 }
